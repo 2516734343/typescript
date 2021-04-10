@@ -1,0 +1,49 @@
+
+.gameWrapper {
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.chess-item {
+  border: 2px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.item {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.black {
+  background-image: radial-gradient(#fff,#000);
+}
+.red {
+  background-image: radial-gradient(#fff,#f42);
+}
+
+.operation {
+  font-size: 18px;
+  font-weight: 600;
+}
+.redChess {
+  color: #f42;
+}
+.blackChess {
+  color: #000;
+}
+.equal {
+  color: blueviolet;
+}
+

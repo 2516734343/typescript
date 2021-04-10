@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es5",//编译成目标语言
     "lib": [
       "dom",
       "dom.iterable",
@@ -13,11 +13,11 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "module": "esnext", // 使用哪一套模块化标准
+    "moduleResolution": "node", // 模块解析方式
+    "resolveJsonModule": true, // 是否允许解析json模块
+    "isolatedModules": true, // 是否把每一个文件当成模块
+    "noEmit": true, // 不生成js文件
     "jsx": "react-jsx"
   },
   "include": [

@@ -1,46 +1,90 @@
-# Getting Started with Create React App
+react+js 开发项目：
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 1、组件传值
+> 2、每个属性传递的值为什么类型
+> 3、传递时间有哪些参数
+> 4、错误发生在运行
 
-## Available Scripts
+> 展示 --> 函数式组件
+> 容器-->class 组件
 
-In the project directory, you can run:
+> `isFlag?: boolean`
+> 在数据后加一个!感叹号，是在告诉 TS，不用考虑为 undefined 的情形。如：`isFlag!`等价于 `isFlag as boolean`
 
-### `yarn start`
+> react 里最好不要直接通过下标修改 state 里的数组
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> 三子棋游戏思路：
+> 将游戏分为棋子、棋盘、整个游戏、游戏结果显示四个组件。
+>
+> - 棋子：需要有状态，点击事件
+> - 棋盘：渲染棋子
+> - 游戏结果：显示结果，
+> - 整个游戏：
+>   > - 处理初始状态（棋盘数组）、
+>   > - 点击事件（下一步什么棋子）、
+>   > - 判断游戏是否结束（按照落子的位置进行判定，是否和周围棋子组成三连--》判断有一方是否获得胜利，判断是否平局，游戏正在进行。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# 总结
 
-### `yarn test`
+## 概念部分
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+TS 是可选的，静态的类型系统。
 
-### `yarn build`
+- 为什么需要类型系统？
+  要构建大型项目，需要很多接口和函数，如果没有类型检查，会产生大量的调试成本。类型系统可以降低调试成本，从而降低开发成本。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 可选的
+  TS 是 JS 的超集，JS 所有功能都可以在 TS 中使用，增加的部分是类型系统。
+- 静态的
+  TS 代码 -> 编译 ->JS 代码 在编译的时候进行类型检查
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 如何约束类型
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+变量、参数、函数返回值
 
-### `yarn eject`
+- 基本类型: string、number、boolean、object、array、void、never、null 和 undefined
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+字面量类型 配合联合类型使用，达到类似枚举的效果
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+let sex: '男'|'女'
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+对象字面量可以更加细化的约束一个对象
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+type User = {
+  name: string,
+  age:number
+}
+```
 
-## Learn More
+- 扩展类型: 类型别名、枚举、接口、类
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+类型别名和接口 不产生编译结果。类型别名把真实值和逻辑名称分开了，当修改逻辑值时，真实值也会被修改
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+枚举和类会产生编译结果， 枚举编译的结果是对象，ts 里的类编译的结果就是 js 的类
+
+ts 的类: 属性列表、修饰符（readonly、访问修饰符：public、private、protected）
+
+泛型： 解除某个功能和类型的耦合
+
+```
+export class Dictory<K,S> {
+  key: K,
+  value: S,
+  setInit: (key: K, value: S) {
+    // 函数体
+  }
+}
+```
+
+类型断言： 开发者清楚某个东西的类型，但是 ts 难以分辨，开发者可以通过类型断言告诉 ts 这里的确切类型是什么，大多用在 ajax 请求
+
+## 类型兼容性 （面试）
+
+鸭子辨型法，子结构辨型法 : 并不关心到底是什么东西，满足某些特征即可。ts 里根据特征分辨是什么东西的
+
+- 基本类型：完全匹配
+- 对象类型：鸭子辨型法，字面量对象直接传递时，会有更严格的类型检查
+- 函数类型：参数数量可以少，不允许多。要求返回必须返回，不要求返回，随意。
