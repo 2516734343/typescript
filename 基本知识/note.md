@@ -207,3 +207,49 @@ let dark: Dark = person;
 
 **参数**：传递给目标函数的参数，可以少，但不可以多
 **返回值**：要求返回则必须返回，且类型需一致
+
+## 类
+
+**属性**
+**属性初始化检查**
+` "strictPropertyInitialization": true`
+
+属性的初始化的位置：
+
+- 构造函数
+- 属性默认值
+
+**属性是可选的，也可以是只读的**
+
+**使用访问修饰符**
+
+访问修饰符可以控制类中的某个成员的访问权限
+
+- public：默认的访问修饰符，公开的，所有的代码都可以访问
+- private：私有的，只有在类中可以访问
+- protected：
+
+**属性简写**
+如果某个属性，通过构造函数的参数传递，可以简写：在构造函数中加访问修饰符。
+
+```
+class User {
+  readonly id: number;
+  name: string;
+  age: number;
+  gender: '男' | '女' = '男'
+  pid?: string
+
+  private curNumber: number = 3;
+
+  constructor(name: string, age: number, id: number, public sex: boolean) {
+    this.name = name;
+    this.age = age;
+    this.id = id;
+  }
+}
+const user = new User('xlj', 18, Math.random(), true)
+```
+
+**访问器**
+控制属性的读取和赋值

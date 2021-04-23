@@ -18,7 +18,8 @@
     "resolveJsonModule": true, // 是否允许解析json模块
     "isolatedModules": true, // 是否把每一个文件当成模块
     "noEmit": true, // 不生成js文件
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "strictPropertyInitialization": true
   },
   "include": [
     "src"
