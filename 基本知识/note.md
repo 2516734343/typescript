@@ -253,3 +253,63 @@ const user = new User('xlj', 18, Math.random(), true)
 
 **访问器**
 控制属性的读取和赋值
+
+```
+class User {
+  readonly id: number;
+  name: string;
+  age: number;
+  gender: '男' | '女' = '男'
+  pid?: string
+
+  private curNumber: number = 3;
+  // private address = '';
+
+
+  constructor(name: string, age: number, id: number, public sex: boolean, private _address: string) {
+    this.name = name;
+    this.age = age;
+    this.id = id;
+  }
+  set address(value) {
+    this._address = value;
+  }
+  get address() {
+    return this._address;
+  }
+  public init() {
+    console.log(this._address);
+  }
+}
+const user = new User('xlj', 18, Math.random(), true, 'beijingshi')
+```
+
+## 泛型
+
+是指附属于函数、类、接口、类型别名之上的类型
+
+### 函数中使用泛型
+
+函数名称`<T>`
+
+```
+function tack<T>(arr: T[]): T[] {
+  return arr;
+}
+const result = tack(['1','2'])
+```
+
+### 在类、接口、类型别名中使用泛型
+
+```
+type callback<T> = (n: T, i: number) => boolean
+```
+
+```
+class Arrays<T> {
+  constructor(private arrs: T[]){}
+  getLength(){
+    return this.arrs.length;
+  }
+}
+```

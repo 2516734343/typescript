@@ -7,20 +7,24 @@ class User {
 
   private curNumber: number = 3;
   // private address = '';
-  set _address(value) {
-    this._address = value;
-  }
-  get _address() {
-    return this._address;
-  }
 
-  constructor(name: string, age: number, id: number, public sex: boolean) {
+
+  constructor(name: string, age: number, id: number, public sex: boolean, private _address: string) {
     this.name = name;
     this.age = age;
     this.id = id;
   }
+  set address(value) {
+    this._address = value;
+  }
+  get address() {
+    return this._address;
+  }
+  public init() {
+    console.log(this._address);
+  }
 }
-const user = new User('xlj', 18, Math.random(), true)
+const newusers = new User('xlj', 18, Math.random(), true, 'beijingshi')
 // user.setAddress('beijingshi');
 // console.log(user.getAddress());
-user._address = '北京市'
+newusers.init();
