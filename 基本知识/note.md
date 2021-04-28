@@ -313,3 +313,20 @@ class Arrays<T> {
   }
 }
 ```
+
+### 泛型约束
+
+用于限制泛型的取值
+
+```
+function test<T extends interface>(){}
+
+```
+
+### 多个泛型使用
+
+```
+function minxArray<T, K>(arr1: T[], arr2: K[]): (T | K)[] {
+    // return arr1.concat(arr2)
+}
+```

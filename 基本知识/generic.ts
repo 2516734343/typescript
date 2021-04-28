@@ -36,3 +36,13 @@ class Arrays<T> {
 
 const classArr = new Arrays([1, 2, 3, 4]);
 console.log(classArr.getLength());
+
+/**
+ * 
+ * @param arr1 多个泛型使用
+ * @param arr2 
+ * @returns 
+ */
+function minxArray<T, K>(arr1: T[], arr2: K[]): (T | K)[] {
+    // return arr1.concat(arr2)
+}
