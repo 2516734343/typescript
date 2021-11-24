@@ -1,4 +1,4 @@
-class User {
+class Users {
   readonly id: number;
   name: string;
   age: number;
@@ -24,7 +24,7 @@ class User {
     console.log(this._address);
   }
 }
-const newusers = new User('xlj', 18, Math.random(), true, 'beijingshi')
+const newusers = new Users('xlj', 18, Math.random(), true, 'beijingshi')
 // user.setAddress('beijingshi');
 // console.log(user.getAddress());
 newusers.init();

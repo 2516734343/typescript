@@ -28,3 +28,6 @@ var user = new User('xlj', 18, Math.random(), true, 'beijingshi');
 // user.setAddress('beijingshi');
 // console.log(user.getAddress());
 user.init();
+
+
+
