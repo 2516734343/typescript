@@ -112,3 +112,9 @@ let person =  {
 }
 let dark: Dark = person;
 // dark.sound
+
+
+
+
+
+

@@ -35,3 +35,36 @@ if (result) {
 }
 
 // console.log(LoginUser.users);
+
+
+
+
+
+
+class Board{
+  width: number = 500;
+  height: number = 700;
+
+
+  // 单例模式 ，构造函数私有化
+  private constructor() { }
+  
+  private static _board?: Board;
+
+  // 方法一： 使用静态方法创建一个私有实例, 常用
+  static createBoard(): Board {
+    if (this._board) {
+      return this._board;
+    }
+    this._board = new Board();
+    return this._board;
+  }
+
+  // 方法二：static + readonly 
+  static readonly singleBoard = new Board();
+
+}
+
+const b1 = Board.createBoard();
+const b2 = Board.createBoard();
+console.log(b1 === b2); /// true
