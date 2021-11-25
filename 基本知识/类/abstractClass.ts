@@ -3,6 +3,7 @@ abstract class Chess {
   x: number = 0;
   y: number = 0;
 
+
   abstract readonly name: string;
 
   move(targetX: number, targetY: number): boolean {
@@ -22,6 +23,8 @@ abstract class Chess {
 
 class Horse extends Chess {
   readonly name: string = '马';
+  // 索引器
+  [prop: string]: any;
 
   rule(targetX: number, targetY: number): boolean {
     return true;
