@@ -1,0 +1,11 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:2516734343/typescript.git",
+  "author": "2516734343 <2516734343@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  }
+}
