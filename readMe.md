@@ -695,3 +695,13 @@ class User {
 
 let u1: InstanceType<typeof User>; // u1的类型为User
 ```
+
+# 声明文件
+
+1. 以`.d.ts`结尾的文件。为 js 代码提供类型声明。
+2. 声明文件的位置：
+
+- 放置到 tsconfig.json 中 include 字段指向的目录中
+- 放置到 node_modules/@types 文件夹中
+- 手动配置 `"typeRoots": ["./demo]`
+- 与 js 代码所在目录相同，并且文件名也相同的文件。用 ts 代码书写的工程发布之后的格式。
