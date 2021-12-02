@@ -6,6 +6,8 @@
   "author": "2516734343 <2516734343@qq.com>",
   "license": "MIT",
   "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
     "reflect-metadata": "^0.1.13"
   }
 }
