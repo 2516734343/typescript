@@ -599,3 +599,99 @@ class A {
 10. AOP: 切面编程
 
     编程方式，将一些业务中共同出现的功能块，横向切分，达到分离关注点的目的。
+
+# 类型演算
+
+> 根据已知信息，计算出新的类型。
+
+1. 三个关键字
+
+- typeof: ts 中的 typeof,书写位置在类型约束的位置上，`let b: typeof a = '123'`,表示获取某个数据的类型，当 typeof 作用于某个类的时候，得到的类型是该类的构造函数。
+
+```js
+class User {
+  loginId: string;
+  loginPwd: string;
+}
+
+function createUser(cls: typeof User): User {
+  return new cls();
+}
+
+const u = createUser(User);
+```
+
+- keyof: 作用于类、接口、类型别名，用于获取其他类型中的左右成员名组成的联合类型
+- in： 往往和 keyof 连用，限制某个索引类型的取值范围
+
+```js
+type Partical<T> = {
+  [p in keyof T]?: T[p]
+}
+
+type Required<T> = {
+  [p in keyof T]-?: T[p]
+}
+
+type ReadOnly<T> = {
+  readonly [p in keyof T]: T[p]
+}
+```
+
+2. ts 中预设的类型演算
+
+   详见：[TypeScript 强大的类型别名](https://juejin.cn/post/6844903753431138311#heading-16)
+
+- `Partical<T>` : 将类型 T 中的成员变成**可选**。
+
+```js
+type Partical<T> = {
+  [p in keyof T]?: T[p]
+}
+```
+
+- `Required<T>` : 将类型 T 中的成员变成**必选**。
+
+```js
+type Required<T> = {
+  [p in keyof T]-?: T[p]
+}
+```
+
+- `ReadOnly<T>` : 将类型 T 中的成员变成**只读**。
+
+```js
+type ReadOnly<T> = {
+  readonly [p in keyof T]: T[p]
+}
+```
+
+- `Exclude<T, U>` : 将类型 T 中**剔除** U 里面也有的的类型。相当于求差集。`let a : Exclude<'a'| 'b' | 'c', 'a'>`
+
+```js
+type Exclude<T, U> = T extends U ? never : T;
+```
+
+- `Extract<T, U>` : 将类型 T 中**保留**U 里面有的类型。相当于求交集。`let a : Extract<'a'| 'b' | 'c', 'a'>`
+
+```js
+type Extract<T, U> = T extends U ? T : never;
+```
+
+- `NonNullable<T>` : 将类型 T 中剔除 null 和 undefined。
+
+```js
+type Extract<T> = T extends null | undefined ? never : T;
+```
+
+- `ReturnType<T>` : 获取函数的返回类型。
+- `InstanceType<T>` : 获取构造函数的实例类型。
+
+```js
+class User {
+  loginId: string;
+  loginPwd: string;
+}
+
+let u1: InstanceType<typeof User>; // u1的类型为User
+```
